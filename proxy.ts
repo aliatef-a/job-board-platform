@@ -11,7 +11,8 @@ export function proxy(request: NextRequest) {
   console.log("Pathname:", pathname);
 
   // rule: check if the host is admin and if the path is /dashboard
-  if (host.includes("admin") && pathname !== "/dashboard") {
+  const isAdminHost = host === "job-board-platform-admin-2026.vercel.app";
+  if (isAdminHost && !pathname.includes("/dashboard")) {
     console.log(
       "Redirecting to /dashboard because host is admin and path is not /dashboard",
     );
@@ -19,7 +20,9 @@ export function proxy(request: NextRequest) {
   }
 
   //   rule: check if he client is trying to access the /dashboard route and if the host is not admin
-  if (pathname.includes("/dashboard") && !host.includes("admin")) {
+  const isClientAccessingDashboard =
+    host === "job-board-platform-brpg.vercel.app";
+  if (pathname.includes("/dashboard") && isClientAccessingDashboard) {
     console.log(
       "Redirecting to /not-authorized because client is trying to access /dashboard without admin privileges",
     );
