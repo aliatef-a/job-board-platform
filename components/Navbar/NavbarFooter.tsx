@@ -27,7 +27,7 @@ function NavbarFooter() {
                             l: [
                                 ["/employer", "Employer hub"],
                                 ["/employer", "Post a job"],
-                                ["/admin", "Back office"],
+                                ["/dashboard", "Back office"],
                             ],
                         },
                         {

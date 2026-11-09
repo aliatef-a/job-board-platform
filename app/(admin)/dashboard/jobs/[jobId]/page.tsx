@@ -1,19 +1,26 @@
 import Link from "next/link";
 
-type props = { params: Promise<{ jobId: string }> };
+type Props = { params: Promise<{ jobId: string }> };
 
-async function JobPage({ params }: props) {
+async function JobPage({ params }: Props) {
     const { jobId } = await params;
-    console.log(jobId);
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <h1>Job Page</h1>
-            <p>This is the job page content.</p>
-            <p>{jobId}</p>
-            <Link href={`/dashboard/jobs/${jobId}/edit`} className="mt-4 text-blue-500 hover:underline">
-                Edit Job {jobId}
+        <section className="space-y-6">
+            <Link href="/dashboard/jobs" className="label-mono text-cobalt underline decoration-2 underline-offset-4">
+                Back to jobs
             </Link>
-        </div>
+            <div className="border-[3px] border-ink bg-card p-5 shadow-hard-sm sm:p-8">
+                <p className="label-mono text-cobalt">Job listing</p>
+                <h1 className="display mt-2 text-4xl sm:text-5xl">Job {jobId}</h1>
+                <p className="mt-4 text-muted-foreground">This is the job page content.</p>
+                <Link
+                    href={`/dashboard/jobs/${jobId}/edit`}
+                    className="mt-6 inline-flex min-h-11 items-center border-[3px] border-ink bg-yellow px-4 py-2 text-sm font-extrabold uppercase tracking-wide shadow-hard-sm"
+                >
+                    Edit job
+                </Link>
+            </div>
+        </section>
     );
 }
 

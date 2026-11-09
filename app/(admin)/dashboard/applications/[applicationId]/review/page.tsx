@@ -1,17 +1,26 @@
 
-type props = {
+import Link from "next/link";
+
+type Props = {
     params: Promise<{ applicationId: string }>;
 };
 
-async function ApplicationReviewPage({ params }: props) {
+async function ApplicationReviewPage({ params }: Props) {
     const { applicationId } = await params;
-    console.log(applicationId);
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <h1>Application Review Page</h1>
-            <p>This is the application review page content.</p>
-            <p>{applicationId}</p>
-        </div>
+        <section className="space-y-6">
+            <Link
+                href={`/dashboard/applications/${applicationId}`}
+                className="label-mono text-cobalt underline decoration-2 underline-offset-4"
+            >
+                Back to application
+            </Link>
+            <div className="border-[3px] border-ink bg-card p-5 shadow-hard-sm sm:p-8">
+                <p className="label-mono text-cobalt">Candidate application</p>
+                <h1 className="display mt-2 text-4xl sm:text-5xl">Review application</h1>
+                <p className="mt-4 text-muted-foreground">Application {applicationId}</p>
+            </div>
+        </section>
     );
 }
 
