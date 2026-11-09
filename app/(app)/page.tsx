@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 export default function Home() {
@@ -11,7 +12,8 @@ export default function Home() {
       <Link href="/jobs" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
         Browse Jobs
       </Link>
-      <Button className="mt-4">Apply Now</Button>
+      <Button variant={"secondary"} className="mt-4">Apply Now</Button>
+      <Input placeholder="Search for jobs..." className="mt-4" />
     </div>
   );
 }
